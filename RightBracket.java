@@ -11,15 +11,21 @@ public class RightBracket {
 
 	boolean solution(String s) {
 
-		while(!"".equals(s)) {
-			if(s.startsWith("(") && s.endsWith(")")) {
-				s = s.replace("()", "");
+		int cnt = 0;
+
+		for (char str : s.toCharArray()) {
+
+			if(str == '(') {
+				cnt++;
 			} else {
-				return false;
+				if(cnt == 0) {
+					return false;
+				}
+				cnt--;
 			}
 		}
 
-		return true;
+		return cnt == 0;
 	}
 
 	public static void main(String[] args) {
